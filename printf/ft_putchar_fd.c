@@ -6,10 +6,11 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:16:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2024/10/08 10:16:43 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/02/01 00:13:48 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+
+#include "../minitalk.h"
 
 void	ft_putchar_fd(char c, int fd, int *count)
 {

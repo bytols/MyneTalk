@@ -6,12 +6,13 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:09:35 by erocha-l          #+#    #+#             */
-/*   Updated: 2024/10/29 14:09:35 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/02/01 00:18:43 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
 
-static void	ft_putnbr_ptr_fd(unsigned long n, int fd, char *base, int *count)
+#include "../minitalk.h"
+
+ void	ft_putnbr_ptr_fd(unsigned long n, int fd, char *base, int *count)
 {
 	if (n > 15)
 	{
