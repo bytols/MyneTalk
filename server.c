@@ -12,29 +12,67 @@
 
 #include "minitalk.h"
 
-void    sigint_handler(int sig)
+letter *letra;
+
+void    zero(int sig)
 {
-    ft_printf("recebi um sigint %d\n", sig);
+    (void) sig;
+    letra->size++;
+}
+
+void    one(int sig)
+{
+    (void) sig;
+    int i;
+    int num;
+
+    num = 1;
+    i = letra->size;
+    letra->size++;
+    while (i)
+    {
+        num = num + num;
+        i--;
+    }
+    letra->letra = letra->letra + num;
 }
 
 int main()
 {
     int pid;
     struct sigaction sa;
+    struct sigaction sb;
 
-    sa.sa_handler = sigint_handler;
+    letra = malloc(sizeof(letter));
+    letra->letra = 0;
+    letra->size = 0;
+    sa.sa_handler = one;
     sigemptyset(&sa.sa_mask);
     sa.sa_flags = 0;
-    if(sigaction(SIGINT, &sa, NULL) == -1)
+    sb.sa_handler = zero;
+    sigemptyset(&sb.sa_mask);
+    sb.sa_flags = 0;
+    if(sigaction(SIGUSR1, &sa, NULL) == -1)
     {
-        ft_printf("puts. deu erro");
-        return (0);
+        ft_printf("deu ruim no um \n");
+        return(1);
+    }
+    if(sigaction(SIGUSR2, &sb, NULL) == -1)
+    {
+        ft_printf("deu ruim no dois \n");
+        return(1);
     }
     pid = getpid();
     ft_printf("%d\n", pid);
     while(1)
     {
-        continue ;
+        if(letra->size == 8)
+        {
+            letra->size = 0;
+            ft_printf("%c", letra->letra);
+            letra->letra = 0;
+        }
+        continue;
     }
     return(0);
 }

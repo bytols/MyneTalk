@@ -17,10 +17,11 @@
 # include <signal.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include <stdlib.h>
 
 typedef struct letra 
 {
-    char letra;
+    int letra;
     int size;
 } letter ; 
 
