@@ -13,11 +13,14 @@
 #include "minitalk.h"
 
 letter *letra;
+int signal_count;
 
 void    zero(int sig)
 {
     (void) sig;
     letra->size++;
+    signal_count++;
+    //ft_printf("%d\n", signal_count);
 }
 
 void    one(int sig)
@@ -35,6 +38,8 @@ void    one(int sig)
         i--;
     }
     letra->letra = letra->letra + num;
+    signal_count++;
+    //ft_printf("%d\n", signal_count);
 }
 
 int main()
@@ -44,14 +49,15 @@ int main()
     struct sigaction sb;
 
     letra = malloc(sizeof(letter));
+    signal_count = 0;
     letra->letra = 0;
     letra->size = 0;
     sa.sa_handler = one;
     sigemptyset(&sa.sa_mask);
-    sa.sa_flags = 0;
+    sa.sa_flags = SA_RESTART | SA_NODEFER;
     sb.sa_handler = zero;
     sigemptyset(&sb.sa_mask);
-    sb.sa_flags = 0;
+    sb.sa_flags = SA_RESTART | SA_NODEFER;
     if(sigaction(SIGUSR1, &sa, NULL) == -1)
     {
         ft_printf("deu ruim no um \n");
@@ -69,7 +75,7 @@ int main()
         if(letra->size == 8)
         {
             letra->size = 0;
-            ft_printf("%c", letra->letra);
+            printf("%c", letra->letra);
             letra->letra = 0;
         }
         continue;
