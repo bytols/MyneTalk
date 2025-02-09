@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 00:51:31 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/02/09 17:48:18 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:51:50 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int	main(void)
 {
 	int	pid;
 
-	g_letra = malloc(sizeof(letter));
-	signal_count = 0;
+	g_letra = malloc(sizeof(t_letter));
 	g_letra->letra = 0;
 	g_letra->size = 0;
 	signal(SIGUSR1, one);
